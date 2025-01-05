@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diario di Pianificazione</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        main {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .action-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .action-form input, .action-form textarea, .action-form button {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .action-form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .action-form button:hover {
+            background-color: #0056b3;
+        }
+        .action-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .action-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Diario di Pianificazione</h1>
+    </header>
+    <main>
+        <h2>Aggiungi un'Azione</h2>
+        <form class="action-form" id="actionForm">
+            <input type="text" id="actionTitle" placeholder="Titolo dell'azione" required>
+            <textarea id="actionDescription" placeholder="Descrizione..." rows="4" required></textarea>
+            <button type="submit">Aggiungi</button>
+        </form>
+        <h2>Azioni Pianificate</h2>
+        <ul class="action-list" id="actionList">
+            <!-- Azioni aggiunte appariranno qui -->
+        </ul>
+    </main>
+    <script>
+        document.getElementById('actionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('actionTitle').value;
+            const description = document.getElementById('actionDescription').value;
+
+            const actionList = document.getElementById('actionList');
+
+            const newAction = document.createElement('li');
+            newAction.innerHTML = `<strong>${title}</strong><p>${description}</p>`;
+
+            actionList.appendChild(newAction);
+
+            document.getElementById('actionForm').reset();
+        });
+    </script>
+</body>
+</html>
